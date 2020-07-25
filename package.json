@@ -2,7 +2,7 @@
   "name": "stream-room",
   "version": "1.0.0",
   "description": "A native app for streaming OTT platforms remotely with friends",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "start": "electron ."
   },
@@ -14,5 +14,9 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^9.1.1"
+  },
+  "dependencies": {
+    "electron-store": "^6.0.0",
+    "electron-widevinecdm": "^7.0.0"
   }
 }
