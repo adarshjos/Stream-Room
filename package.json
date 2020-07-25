@@ -1,20 +1,16 @@
 {
-  "name": "electron-quick-start",
+  "name": "stream-room",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A native app for streaming OTT platforms remotely with friends",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/adarshjos/Stream-Room",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Electron"
   ],
-  "author": "GitHub",
+  "author": "Adarsh Joseph",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^9.1.1"
