@@ -8,7 +8,7 @@ module.exports = [
     // },
     {
         name: 'YouTube',
-        logo: 'services/youtube.svg',
+        logo: '../services/youtube.svg',
         url: 'https://youtube.com',
         style: {},
         color: '#ff0000',

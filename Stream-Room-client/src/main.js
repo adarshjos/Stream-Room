@@ -9,16 +9,6 @@ const ottPlatformList = require('./ott-platform')
 const store = new Store();
 let mainWindow;
 
-/*
-TODO Load Widevine Only On Mac
--->in mac always it return darwin for the platform
--->this is used for the issues: Widevine supports the use of standards-based royalty-free solutions for encryption,
-                                adaptive streaming,
- */
-// if (isMac) {
-//   require('electron-widevinecdm').load(app);
-// }
-
 function createWindow () {
   // Create the browser window.
  // BrowserWindow.addExtension()
@@ -38,12 +28,12 @@ function createWindow () {
   ottPlatformList.forEach(eachService=>{
     global.ott_services.push(eachService);
   })
-
+  console.log(global.ott_services);
 
   //Menu Builder
   Menu.setApplicationMenu(menu(store,app,mainWindow,global.ott_services))
   console.log('loading the main content menu');
-  mainWindow.loadFile('src/UI/index.html');
+  mainWindow.loadFile('src/app/homepage/index.html');
 
   // Open the DevTools.
    mainWindow.webContents.openDevTools()
@@ -75,7 +65,7 @@ ipcMain.on('open-url', (e, service) => {
   //mainWindow.loadURL(service.url);
   console.log(service.name)
   if(service.name==='YouTube'){
-    mainWindow.loadFile('src/UI/youtube.html')
+    mainWindow.loadFile('src/app/youtube-service/youtube.html')
   }else{
     mainWindow.loadURL(service.url);
   }
