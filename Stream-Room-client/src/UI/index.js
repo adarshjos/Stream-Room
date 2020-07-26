@@ -52,9 +52,9 @@ function animateLoader(service, img) {
 // initialize services
 ott_services.forEach(service => {
   // skip if service is hidden
-  if (service.hidden) {
-    return;
-  }
+  // if (service.hidden) {
+  //   return;
+  // }
 
   // create service element
   let elem = createElement('a', 'service');

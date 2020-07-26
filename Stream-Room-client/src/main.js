@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, Menu, BrowserWindow, ipcMain} = require('electron')
+const {app, Menu, BrowserWindow, ipcMain, session} = require('electron')
 const path = require('path')
 const Store = require('electron-store')
 const isMac = process.platform === 'darwin'
@@ -15,19 +15,20 @@ TODO Load Widevine Only On Mac
 -->this is used for the issues: Widevine supports the use of standards-based royalty-free solutions for encryption,
                                 adaptive streaming,
  */
-if (isMac) {
-  require('electron-widevinecdm').load(app);
-}
+// if (isMac) {
+//   require('electron-widevinecdm').load(app);
+// }
 
 function createWindow () {
   // Create the browser window.
+ // BrowserWindow.addExtension()
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration:true
-    }
+      nodeIntegration: true,
+      webviewTag: true    }
   })
 
   //ott-services loading
@@ -71,7 +72,14 @@ app.on('window-all-closed', function () {
 ipcMain.on('open-url', (e, service) => {
   console.log('-->>Openning Service ' + service.name);
  // mainWindow.webContents.userAgent = service.userAgent ? service.userAgent : defaultUserAgent;
-  mainWindow.loadURL(service.url);
+  //mainWindow.loadURL(service.url);
+  console.log(service.name)
+  if(service.name==='YouTube'){
+    mainWindow.loadFile('src/UI/youtube.html')
+  }else{
+    mainWindow.loadURL(service.url);
+  }
+
 });
 
 
